@@ -37,7 +37,8 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.title("🌀 Allpass Filters & Frequency Warping")
+# st.title("🌀 Allpass Filters & Frequency Warping")
+st.markdown("### 🌀 Allpass Filters & Frequency Warping")
 st.markdown("""
 Explore how **Allpass Filters**—which pass all frequencies with magnitude 1 but alter phase—are used for **Fractional Delays** and **Psychoacoustic Frequency Warping** (Bark Scale).
 """)
@@ -126,7 +127,7 @@ tab1, tab2, tab3 = st.tabs([
 # TAB 1: ALLPASS FUNDAMENTALS
 # ==============================================================================
 with tab1:
-    st.header("1. First-Order Allpass Filter")
+    # st.header("1. First-Order Allpass Filter")
     st.markdown(r"""
     The fundamental building block is the first-order allpass filter:
     $$ H_{ap}(z) = \frac{z^{-1} - \bar{a}}{1 - a z^{-1}} $$
@@ -188,11 +189,18 @@ with tab1:
         * **Group Delay:** Notice it is NOT constant. Low frequencies might be delayed more or less than high frequencies depending on sign of $a$. This variation is what allows frequency warping!.
         """)
 
+    with st.expander("Observation"):
+            st.markdown(r"""
+        * **Pole:** At $z = {a_real}$
+        * **Zero:** At $z = {1/a_real:.2f}$
+        * **Group Delay:** Notice it is NOT constant. Low frequencies might be delayed more or less than high frequencies depending on sign of $a$. This variation is what allows frequency warping!.
+        """)
+
 # ==============================================================================
 # TAB 2: FRACTIONAL DELAYS
 # ==============================================================================
 with tab2:
-    st.header("2. Fractional Delays")
+    # st.header("2. Fractional Delays")
     st.markdown("""
     Standard digital delays are integers ($z^{-1}, z^{-2}$). To get a delay of **4.5 samples**, we need filters.
     * **FIR Approach:** Windowed Sinc function shifted by $d$.
@@ -253,17 +261,21 @@ with tab2:
         
         st.pyplot(fig2)
         
-        st.markdown(f"""
-        **Comparison:**
-        * **IIR (Allpass):** Magnitude is exactly **0 dB** (flat). Perfect allpass behavior, but phase/delay varies at high frequencies.
-        * **FIR (Windowed Sinc):** Magnitude **drops** at high frequencies (low-pass effect) because we truncated the infinite sinc. It's not a perfect allpass.
-        """)
-
+        # st.markdown(f"""
+        # **Comparison:**
+        # * **IIR (Allpass):** Magnitude is exactly **0 dB** (flat). Perfect allpass behavior, but phase/delay varies at high frequencies.
+        # * **FIR (Windowed Sinc):** Magnitude **drops** at high frequencies (low-pass effect) because we truncated the infinite sinc. It's not a perfect allpass.
+        # """)
+    with st.expander("⚖️ Comparison:"):
+            st.markdown(r"""
+            * **IIR (Allpass):** Magnitude is exactly **0 dB** (flat). Perfect allpass behavior, but phase/delay varies at high frequencies.
+            * **FIR (Windowed Sinc):** Magnitude **drops** at high frequencies (low-pass effect) because we truncated the infinite sinc. It's not a perfect allpass.
+            """)
 # ==============================================================================
 # TAB 3: FREQUENCY WARPING
 # ==============================================================================
 with tab3:
-    st.header("3. Psychoacoustic Frequency Warping")
+    # st.header("3. Psychoacoustic Frequency Warping")
     st.markdown("""
     The human ear (Cochlea) has higher resolution at low frequencies. We can "warp" a filter's frequency axis to match this using an allpass substitution:
     $$ z^{-1} \leftarrow H_{ap}(z) $$
@@ -324,8 +336,13 @@ with tab3:
         
         st.pyplot(fig3)
         
-        st.markdown(f"""
-        **What this means:**
-        With $a={warp_coeff}$, the low frequencies (e.g., $0$ to $0.1\pi$) are "stretched" to occupy a larger range ($0$ to {mapped_freq/np.pi:.2f}$\pi$) in the new domain. 
-        This means any filter designed in the new domain will have **more coefficients/resolution** dedicated to that original low-frequency band.
-        """)
+        # st.markdown(f"""
+        # **What this means:**
+        # With $a={warp_coeff}$, the low frequencies (e.g., $0$ to $0.1\pi$) are "stretched" to occupy a larger range ($0$ to {mapped_freq/np.pi:.2f}$\pi$) in the new domain. 
+        # This means any filter designed in the new domain will have **more coefficients/resolution** dedicated to that original low-frequency band.
+        # """)
+
+    with st.expander("💡What this means?"):
+            st.markdown(r"""With $a={warp_coeff}$, the low frequencies (e.g., $0$ to $0.1\pi$) are "stretched" to occupy a larger range ($0$ to {mapped_freq/np.pi:.2f}$\pi$) in the new domain. 
+            This means any filter designed in the new domain will have **more coefficients/resolution** dedicated to that original low-frequency band.
+            """)
