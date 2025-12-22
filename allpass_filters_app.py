@@ -189,12 +189,12 @@ with tab1:
         # * **Group Delay:** Notice it is NOT constant. Low frequencies might be delayed more or less than high frequencies depending on sign of $a$. This variation is what allows frequency warping!.
         # """)
 
-        with st.expander("Observation"):
-            st.markdown(r"""
-            * **Pole:** At $z = {a_real}$
-            * **Zero:** At $z = {1/a_real:.2f}$
-            * **Group Delay:** Notice it is NOT constant. Low frequencies might be delayed more or less than high frequencies depending on sign of $a$. This variation is what allows frequency warping!.
-            """)
+    with st.expander("Observation"):
+        st.markdown(fr"""
+        * **Pole:** At $z = {a_real}$
+        * **Zero:** At $z = {1/a_real:.2f}$
+        * **Group Delay:** Notice it is NOT constant. Low frequencies might be delayed more or less than high frequencies depending on sign of $a$. This variation is what allows frequency warping!.
+        """)
 
 # ==============================================================================
 # TAB 2: FRACTIONAL DELAYS
@@ -342,6 +342,6 @@ with tab3:
         # """)
         
     with st.expander("💡What this means?"):
-        st.markdown(r"""With $a={warp_coeff}$, the low frequencies (e.g., $0$ to $0.1\pi$) are "stretched" to occupy a larger range ($0$ to {mapped_freq/np.pi:.2f}$\pi$) in the new domain. 
+        st.markdown(fr"""With $a={warp_coeff}$, the low frequencies (e.g., $0$ to $0.1\pi$) are "stretched" to occupy a larger range ($0$ to {mapped_freq/np.pi:.2f}$\pi$) in the new domain. 
         This means any filter designed in the new domain will have **more coefficients/resolution** dedicated to that original low-frequency band.
         """)
