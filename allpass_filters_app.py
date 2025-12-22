@@ -39,9 +39,9 @@ st.markdown("""
 
 # st.title("🌀 Allpass Filters & Frequency Warping")
 st.markdown("### 🌀 Allpass Filters & Frequency Warping")
-st.markdown("""
-Explore how **Allpass Filters**—which pass all frequencies with magnitude 1 but alter phase—are used for **Fractional Delays** and **Psychoacoustic Frequency Warping** (Bark Scale).
-""")
+# st.markdown("""
+# Explore how **Allpass Filters**—which pass all frequencies with magnitude 1 but alter phase—are used for **Fractional Delays** and **Psychoacoustic Frequency Warping** (Bark Scale).
+# """)
 
 # --- Helper Functions from Text ---
 def get_allpass_coeffs(a):
@@ -138,7 +138,8 @@ with tab1:
     col1, col2 = st.columns([1, 2])
     
     with col1:
-        st.subheader("Design")
+        # st.subheader("Design")
+        st.markdown(r"""Design""")
         a_real = st.slider("Coefficient 'a' (Real part)", -0.9, 0.9, 0.5, 0.1)
         st.caption("Change 'a' to see the Pole/Zero move. For stability, $|a| < 1$.")
         
@@ -162,7 +163,8 @@ with tab1:
         ax[0].axhline(0, color='gray', lw=0.5)
         ax[0].set_xlim(-2.5, 2.5)
         ax[0].set_ylim(-1.5, 1.5)
-        ax[0].set_aspect('equal')
+        # ax[0].set_aspect('equal')
+        ax[0].set_aspect('equal', adjustable='box')
         ax[0].set_title("Pole-Zero Plot")
         ax[0].legend(loc='lower right')
         ax[0].grid(True, alpha=0.3)
@@ -179,6 +181,7 @@ with tab1:
         ax[1].set_xlabel("Normalized Freq ($\times \pi$)")
         ax[1].set_ylabel("Delay (samples)")
         ax[1].grid(True, alpha=0.3)
+        ax[1].set_box_aspect(1)
         
         st.pyplot(fig1)
         
