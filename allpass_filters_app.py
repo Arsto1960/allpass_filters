@@ -139,7 +139,7 @@ with tab1:
     
     with col1:
         # st.subheader("Design")
-        st.markdown(r"""Design""")
+        # st.markdown(r"""Design""")
         a_real = st.slider("Coefficient 'a' (Real part)", -0.9, 0.9, 0.5, 0.1)
         st.caption("Change 'a' to see the Pole/Zero move. For stability, $|a| < 1$.")
         
@@ -215,7 +215,7 @@ with tab2:
     with col_d1:
         desired_delay = st.slider("Target Delay (Samples)", 0.1, 10.0, 4.5, 0.1)
         
-        st.subheader("FIR Settings")
+        # st.subheader("FIR Settings")
         L_fir = st.slider("FIR Length (L)", 4, 30, 10)
         
     with col_d2:
@@ -330,9 +330,10 @@ with tab3:
                      xy=(test_freq/np.pi, mapped_freq/np.pi), 
                      xytext=(0.2, 0.5), arrowprops=dict(arrowstyle='->', color='red'))
         
-        ax3.set_title("Frequency Mapping: Input $\Omega$ vs Warped $\Omega_{new}$")
-        ax3.set_xlabel("Input Frequency ($\times \pi$)")
-        ax3.set_ylabel("Warped Frequency ($\times \pi$)")
+        # ax3.set_title("Frequency Mapping: Input $\Omega$ vs Warped $\Omega_{new}$")
+        ax3.set_title("Frequency Mapping")
+        ax3.set_xlabel("Input Frequency ($ \times \pi$)")
+        ax3.set_ylabel("Warped Frequency ($ \times \pi$)")
         ax3.grid(True, alpha=0.3)
         ax3.legend()
         
