@@ -283,7 +283,8 @@ with tab3:
     """)
     
     col_w1, col_w2 = st.columns([1, 2])
-    
+    warp_coeff = None
+    mapped_freq = None
     with col_w1:
         st.subheader("Warping Config")
         # Bark calc from text: a = 0.85 approx for 32kHz
