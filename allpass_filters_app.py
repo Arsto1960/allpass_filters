@@ -283,8 +283,6 @@ with tab3:
     """)
     
     col_w1, col_w2 = st.columns([1, 2])
-    warp_coeff = None
-    mapped_freq = None
     with col_w1:
         st.subheader("Warping Config")
         # Bark calc from text: a = 0.85 approx for 32kHz
@@ -343,7 +341,7 @@ with tab3:
         # This means any filter designed in the new domain will have **more coefficients/resolution** dedicated to that original low-frequency band.
         # """)
 
-    with st.expander("💡What this means?"):
+        with st.expander("💡What this means?"):
             st.markdown(r"""With $a={warp_coeff}$, the low frequencies (e.g., $0$ to $0.1\pi$) are "stretched" to occupy a larger range ($0$ to {mapped_freq/np.pi:.2f}$\pi$) in the new domain. 
             This means any filter designed in the new domain will have **more coefficients/resolution** dedicated to that original low-frequency band.
             """)
