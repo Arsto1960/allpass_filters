@@ -192,7 +192,7 @@ with tab1:
         # * **Group Delay:** Notice it is NOT constant. Low frequencies might be delayed more or less than high frequencies depending on sign of $a$. This variation is what allows frequency warping!.
         # """)
 
-    with st.expander("Observation"):
+    with st.expander("""🔎 Observation"""):
         st.markdown(fr"""
         * **Pole:** At $z = {a_real}$
         * **Zero:** At $z = {1/a_real:.2f}$
